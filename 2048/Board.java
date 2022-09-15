@@ -153,8 +153,10 @@ public class Board extends Tile {
     public Tile[] join(Tile[] col) {
         for (int i = 0; i < 3; i++) {
             if (col[i].getTile() == col[i + 1].getTile()) {
+                score += col[i].getTile();
                 col[i].setTile(col[i].getTile() * 2);
                 col[i + 1].setTile(0);
+
             }
         }
         return col;
