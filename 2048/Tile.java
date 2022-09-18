@@ -18,17 +18,13 @@ public class Tile {
         return this.val;
     }
 
-    public Tile[] getSegment(Tile[][] board, int x) {
-        return board[x];
-    }
-
     // setters
     // set the tile's value
     public void setTile(int val) {
         this.val = val;
     }
 
-    // set the tile's color
+    // set the Tile's color
     public void setCol() {
         int val = this.val;
         switch (val) {
@@ -70,7 +66,7 @@ public class Tile {
         }
     }
 
-    // get the color
+    // get the colour of the Tile
     public Color getCol() {
         this.setCol();
         return this.col;

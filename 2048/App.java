@@ -13,6 +13,7 @@ public class App extends JPanel implements KeyListener {
     static JFrame f = new JFrame("Welcome to Game 2048");
     static App game = new App();
 
+    // shift Tiles based on key events
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
@@ -32,6 +33,7 @@ public class App extends JPanel implements KeyListener {
         f.repaint();
     }
 
+    // default functions with key events
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -42,6 +44,7 @@ public class App extends JPanel implements KeyListener {
 
     }
 
+    // GUI for the gameboard
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -63,6 +66,7 @@ public class App extends JPanel implements KeyListener {
         }
     }
 
+    // GUI for each tile
     public void tileGraphics(int x, int y, Graphics g, Tile sq) {
         Graphics2D g2 = (Graphics2D) g;
         int val = sq.getTile();

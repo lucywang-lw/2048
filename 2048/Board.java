@@ -7,6 +7,7 @@ public class Board extends Tile {
     int times = 4;
     int border = 0;
 
+    // create the game board
     public Board() {
         board = new Tile[4][4];
 
@@ -18,14 +19,18 @@ public class Board extends Tile {
     }
 
     // Getter methods
+
+    // get current score
     public int getScore() {
         return this.score;
     }
 
+    // return the current board
     public Tile[][] getBoard() {
         return this.board;
     }
 
+    // return the highest tile on the board
     public int highest() {
         int max = 0;
         for (int i = 0; i < 4; i++) {
@@ -38,15 +43,7 @@ public class Board extends Tile {
         return max;
     }
 
-    public void print() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.println(board[i][j]);
-            }
-        }
-    }
-
-    // create a new tile with the value 2 or 4
+    // create a new tile with the value 2 or 4 randomly
     public void createTile() {
         Random rand = new Random();
         int[] twoFour = new int[] { 2, 4 };
@@ -63,7 +60,7 @@ public class Board extends Tile {
         }
     }
 
-    // game is done - board is full
+    // game is done - board is full and no more moves
     public boolean over() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -81,6 +78,7 @@ public class Board extends Tile {
         return true;
     }
 
+    // shift all tiles up
     public void up() {
         Tile[] temp = new Tile[4];
         int m = 0;
@@ -97,6 +95,7 @@ public class Board extends Tile {
         }
     }
 
+    // shift all tiles down
     public void down() {
         Tile[] temp = new Tile[4];
         int m = 0;
@@ -115,6 +114,7 @@ public class Board extends Tile {
         }
     }
 
+    // shift all tiles to the right
     public void right() {
         for (int i = 0; i < 4; i++) {
             Tile[] temp = reverse(board[i]);
@@ -123,12 +123,14 @@ public class Board extends Tile {
         }
     }
 
+    // shift all tiles to the left
     public void left() {
         for (int i = 0; i < 4; i++) {
             board[i] = call(board[i]);
         }
     }
 
+    // reverse an array of Tiles
     public Tile[] reverse(Tile[] col) {
         for (int i = 0; i < col.length / 2; i++) {
             Tile temp = col[i];
@@ -138,6 +140,7 @@ public class Board extends Tile {
         return col;
     }
 
+    // remove all the zeros in an array of Tiles and shift all values to the left
     public Tile[] shift(Tile[] col) {
         Tile[] shifted = { new Tile(), new Tile(), new Tile(), new Tile() };
         int k = 0;
@@ -150,6 +153,7 @@ public class Board extends Tile {
         return shifted;
     }
 
+    // join equal Tiles together
     public Tile[] join(Tile[] col) {
         for (int i = 0; i < 3; i++) {
             if (col[i].getTile() == col[i + 1].getTile()) {
@@ -162,6 +166,7 @@ public class Board extends Tile {
         return col;
     }
 
+    // shift the array of Tiles and combine equal values
     public Tile[] call(Tile[] col) {
         col = shift(col);
         col = join(col);
